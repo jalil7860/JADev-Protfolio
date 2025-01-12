@@ -84,3 +84,63 @@ app.post('/submit', async (req, res) => {
     res.status(400).send('CAPTCHA verification failed!');
   }
 });
+
+// Validation with reCaptcha 
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Default form submission roko
+    
+    // Form fields reference
+    const nameField = this.querySelector('input[name="from_name"]');
+    const emailField = this.querySelector('input[name="email"]');
+    const messageField = this.querySelector('textarea[name="message"]');
+    const btn = this.querySelector('button');
+
+    // Validation checks
+    if (!nameField.value.trim()) {
+        alert('Please enter your name.');
+        nameField.focus();
+        return;
+    }
+
+    if (!validateEmail(emailField.value.trim())) {
+        alert('Please enter a valid email address.');
+        emailField.focus();
+        return;
+    }
+
+    if (!messageField.value.trim()) {
+        alert('Please enter your message.');
+        messageField.focus();
+        return;
+    }
+
+    // If validation passes, proceed with EmailJS
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    emailjs.sendForm('service_nxutf7o', 'template_zfgjmzf', this)
+        .then(() => {
+            // Success case
+            btn.textContent = 'Message Sent!';
+            this.reset(); // Clear form
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 3000);
+        }, (error) => {
+            // Error case
+            console.error('Error:', error);
+            btn.textContent = 'Failed to send';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 3000);
+        });
+});
+
+// Email validation function
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
