@@ -21,9 +21,6 @@ html , body{
     background: linear-gradient(red,blue);
     border-radius: 5px;
 }
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
 :root{
     --primary:#6366f1;
     --primary-dark:#4f46e5;
