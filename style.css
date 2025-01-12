@@ -48,7 +48,7 @@ nav{
     background-color: var(--nav-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 1.25rem 0;
+    padding: 1rem 0;
 }
 .nav-container{
     display: flex;
@@ -620,10 +620,11 @@ nav{
 .footer-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4rem;
+    gap: 2rem;
 }
 .footer-col {
     color: var(--text-s);
+    margin-left: 20px;
 }
 .footer-logo{
     font-size: 1.75rem;
@@ -669,6 +670,13 @@ nav{
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     margin-top: 2rem;
+}
+.credit{
+    background: linear-gradient(45deg, var(--primary), var(--acent));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: 600;
+    margin-top: 8px;
 }
 
 
