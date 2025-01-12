@@ -84,3 +84,37 @@ app.post('/submit', async (req, res) => {
     res.status(400).send('CAPTCHA verification failed!');
   }
 });
+
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Form ko default submit hone se roko
+
+    // reCAPTCHA Validation
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+        Swal.fire({
+            icon: 'error',
+            title: 'reCAPTCHA Failed!',
+            text: 'Please complete the reCAPTCHA to prove you are not a robot.',
+        });
+        return; // Stop form submission
+    }
+
+    // If reCAPTCHA is valid, send email
+    emailjs.sendForm('service_nxutf7o', 'template_zfgjmzf', this)
+        .then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Message Sent!',
+                text: 'Thank you for reaching out. I will get back to you soon.',
+            });
+            this.reset(); // Form fields clear karo
+            grecaptcha.reset(); // reCAPTCHA reset
+        }, (error) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong. Please try again later.',
+            });
+            console.error('Failed...', error);
+        });
+});
