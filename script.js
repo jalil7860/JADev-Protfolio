@@ -178,3 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Load JSON configuration for particles.js
+    fetch('particles-config.json') // JSON file ka path
+        .then(response => response.json())
+        .then(config => {
+            particlesJS('particles-hero', config); // Use JSON config with new ID
+        })
+        .catch(error => {
+            console.error("Error loading particles configuration:", error);
+        });
+});
