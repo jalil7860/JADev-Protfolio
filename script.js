@@ -178,8 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     // Load JSON configuration for particles.js
     fetch('particles-config.json') // JSON file ka path
