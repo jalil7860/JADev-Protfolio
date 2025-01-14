@@ -48,7 +48,7 @@
             "enable": true,
             "speed": 6,
             "direction": "none",
-            "random": false,
+            "random": true,
             "straight": false,
             "out_mode": "bounce",
             "attract": {
@@ -73,9 +73,9 @@
         },
         "modes": {
             "grab": {
-                "distance": 300,
+                "distance": 400,
                 "line_linked": {
-                    "opacity": 0.6
+                    "opacity": 0.5
                 }
             },
             "bubble": {
