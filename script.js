@@ -5,7 +5,6 @@
                 navLinks.classList.toggle("active")
             })
 
-            // Animate skill bars on scroll
             const skillBars = document.querySelectorAll('.skill-progress');
             const animateSkills = () => {
                 skillBars.forEach(bar => {
