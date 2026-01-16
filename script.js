@@ -32,31 +32,28 @@
             }
         });
 
-        // EmailJS initialization
-emailjs.init("xCznA1W2dUJX24J4o"); // Public key EmailJS dashboard se milega
+emailjs.init("xCznA1W2dUJX24J4o");
 
-// Form submission handler
+
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    
-    // Send button ko loading state mein kardo
+ 
     const btn = this.querySelector('button');
     const originalText = btn.textContent;
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    // EmailJS ke through email bhejo
     emailjs.sendForm('service_nxutf7o', 'template_zfgjmzf', this)
         .then(() => {
-            // Success case
+
             btn.textContent = 'Message Sent!';
-            this.reset(); // Form clear kardo
+            this.reset(); 
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.disabled = false;
             }, 3000);
         }, (error) => {
-            // Error case
+
             console.log('Error:', error);
             btn.textContent = 'Failed to send';
             setTimeout(() => {
@@ -179,11 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Load JSON configuration for particles.js
-    fetch('particles-config.json') // JSON file ka path
+    fetch('particles-config.json')
         .then(response => response.json())
         .then(config => {
-            particlesJS('particles-hero', config); // Use JSON config with new ID
+            particlesJS('particles-hero', config); 
         })
         .catch(error => {
             console.error("Error loading particles configuration:", error);
